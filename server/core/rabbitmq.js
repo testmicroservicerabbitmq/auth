@@ -1,24 +1,19 @@
 const amqp = require('amqplib');
 
+const host = 'amqp://localhost';
+const opt = {
+  credentials: amqp.credentials.plain('rabbitmq', 'rabbitmq'),
+};
+
 class RabbitMQ {
   constructor() {
-    this.uri = null;
-    this.opt = null;
     this.channel = null;
   }
 
   async connect() {
-    this.setMQ();
-    const connection = await amqp.connect(this.uri, this.opt);
+    const connection = await amqp.connect(host, opt);
     this.channel = await connection.createChannel();
     return this.channel;
-  }
-
-  setMQ() {
-    this.uri = 'amqp://localhost';
-    this.otp = {
-      credentials: amqp.credentials.plain('rabbitmq', 'rabbitmq'),
-    };
   }
 
   async assertQueue(queueName, options = {}) {

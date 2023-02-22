@@ -6,8 +6,6 @@ COPY package.json package-lock.json* ./
 
 RUN npm install && npm cache clean --force
 
-RUN apt-get install httping
-
 COPY . .
 
 CMD ["npm", "run", "dev"]

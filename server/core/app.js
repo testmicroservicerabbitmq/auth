@@ -32,21 +32,21 @@ class App {
     });
 
     // RabbitMQ setup
-    amqp.connect(amqpUrl, opt, (er, conn) => {
-      if (er) {
-        console.log(er.stack);
-        console.error(er.stack);
-        process.exit(1);
-      }
-      conn.createChannel((err, channel) => {
-        if (err) {
-          console.error(err.stack);
-          process.exit(1);
-        }
-        this.amqpChannel = channel;
-        console.log('RabbitMQ channel created');
-      });
-    });
+    // amqp.connect(amqpUrl, opt, (er, conn) => {
+    //   if (er) {
+    //     console.log(er.stack);
+    //     console.error(er.stack);
+    //     process.exit(1);
+    //   }
+    //   conn.createChannel((err, channel) => {
+    //     if (err) {
+    //       console.error(err.stack);
+    //       process.exit(1);
+    //     }
+    //     this.amqpChannel = channel;
+    //     console.log('RabbitMQ channel created');
+    //   });
+    // });
   }
 
   start(port) {
