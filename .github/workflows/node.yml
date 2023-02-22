@@ -10,7 +10,7 @@ env:
   IMAGE_NAME: ${{ secrets.IMAGE_NAME }}
 
 jobs:
-  build-and-push:
+  build:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -28,3 +28,17 @@ jobs:
           context: .
           push: true
           tags: ${{ env.IMAGE_NAME }}:${{ github.sha }}
+# on:
+#   push:
+#     branches: [main]
+#   pull_request:
+#     branches: [main]
+# jobs:
+#   build:
+#     runs-on: ubuntu-latest
+#     steps:
+#       - uses: actions/checkout@v2
+#       - uses: actions/setup-node@v2
+#         with:
+#           node-version: '16'
+#       - run: npm install
